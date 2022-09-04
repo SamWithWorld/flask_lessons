@@ -1,5 +1,7 @@
 # encoding: utf-8
-
+'''
+03_lesson_template
+'''
 from flask import Flask, render_template
 
 app = Flask(__name__)
