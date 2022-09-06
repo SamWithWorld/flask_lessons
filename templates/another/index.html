@@ -1,46 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    {% if user %}
-        我的名字是:{{ user.name }}
-        {% if user.age < 20 %}
-            年龄: {{ user.age }},是一名青少年
-        {% elif  20<= user.age < 50 %}
-            年龄: {{ user.age }},是一名中年人
-        {% endif %}
-    {% else %}
-        hello, Stranger
-    {% endif %}
-    <hr>
-    <table>
-        <thead>
-            <th>书名</th>
-            <th>作者</th>
-            <th>价格</th>
-        </thead>
-        <tbody>
-            {% for book in books %}
-                <tr>
-                    <td> {{ book.author }} </td>
-                    <td> {{ book.name }} </td>
-                    <td> {{ book.price }} </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
-    <hr>
-    <img src="{{ image | default('https://bjnewsrec-cv.ws.126.net/little57859de6de5j00rhqns60010c000hs00bug.jpg?imageView&thumbnail=140y88') }}" alt="">
-    <br>
-    过滤器first: {{ fruit | first }}s
-    <br>
-    过滤器join: {{ fruit | join('-') }}
-    <br>
-    过滤器upper: {{ fruit | first | upper }}
+{% extends "another/base.html" %}
 
-</body>
-</html>
+{% block title %}Index{% endblock %}
+
+{% block head %}
+     {{ super() }}
+     <style>
+     </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Hello, World!</h1>
+{% endblock %}
