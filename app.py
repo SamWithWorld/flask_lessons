@@ -1,26 +1,30 @@
 # encoding: utf-8
 '''
-04_control_statements_and_filter
-if 条件判断语句
-for 循环控制语句
-filter 过滤器
+06_form
 '''
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+import config
+
 
 app = Flask(__name__)
+app.config.from_object(config)
 
+class NameForm(FlaskForm):
+    name = StringField('What is your name?', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('another/index.html')
-
-
-@app.route('/user/<name>')
-def user(name):
-    # 输出视图函数index的url
-    print(url_for('index', _external=True, page=2, version=1))
-    return render_template('user.html', name=name)
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+    return render_template('index.html', form=form, name=name)
 
 
 if __name__ == '__main__':
