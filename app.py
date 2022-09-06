@@ -1,9 +1,15 @@
 # encoding: utf-8
 '''
-04_control_statements_and_filter
-if 条件判断语句
-for 循环控制语句
-filter 过滤器
+05_template_inherit_url_for
+
+模板继承
+
+集成 Bootstrap
+
+url_for 反转url
+
+加载静态文件
+
 '''
 from flask import Flask, render_template, url_for
 from flask_bootstrap import Bootstrap
