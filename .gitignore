@@ -1,1 +1,3 @@
-__pycache__/**
+# Packages
+__pycache__
+.idea
