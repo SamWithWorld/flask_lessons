@@ -1,6 +1,6 @@
 # encoding: utf-8
 '''
-08_create_project
+09_projcet_template
 '''
 from app import app
 
