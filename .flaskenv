@@ -1,1 +1,2 @@
 FLASK_APP=microblog.py
+SECRET_KEY='SAM2022__SECRET_KEY'

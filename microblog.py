@@ -1,6 +1,6 @@
 # encoding: utf-8
 '''
-09_projcet_template
+10_projcet_form
 '''
 from app import app
 

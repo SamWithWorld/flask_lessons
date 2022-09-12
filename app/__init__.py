@@ -5,7 +5,10 @@
 # @Author    :Sam
 
 from flask import Flask
+# 从config模块导入Config类
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
 from app import routes
