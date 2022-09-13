@@ -1,6 +1,7 @@
 # encoding: utf-8
 '''
 11_project_database
+blog项目数据库操作
 '''
 from app import app, db
 from app.models import User, Post

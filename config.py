@@ -1,8 +1,4 @@
-# !/usr/local/bin python3
-# coding: utf-8
-# @FileName  :config.py
-# @Time      :2022-09-12 10:58
-# @Author    :Sam
+
 
 import os
 
