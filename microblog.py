@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-12_project_user_login
-blog项目用户登录
+14_project_error_handle
+blog项目错误处理
 '''
 from app import app, db
 from app.models import User, Post
