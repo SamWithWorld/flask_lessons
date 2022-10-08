@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-15_project_follower
-blog项目关注功能
+16_project_paginate
+blog项目分页功能
 '''
 from app import app, db
 from app.models import User, Post

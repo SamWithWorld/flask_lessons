@@ -1,0 +1,113 @@
+2022-10-03 21:48:12,209 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-03 22:25:12,638 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-05 18:15:16,891 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-05 18:15:52,256 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-06 18:12:32,576 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-06 18:42:56,737 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-06 21:22:27,689 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-06 21:23:55,192 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-06 21:25:12,782 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-06 21:27:58,733 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-07 08:10:33,581 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-07 08:10:55,447 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-07 09:13:42,418 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-07 10:48:34,556 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-07 21:41:54,991 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-07 21:41:59,526 ERROR: Exception on /explore [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 51, in explore
+    return render_template('index.html', title='Explore', posts=posts.items())
+TypeError: 'list' object is not callable
+2022-10-07 21:42:23,818 ERROR: Exception on /explore [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 51, in explore
+    # 页面 跟主页面非常相似，因此重用了index.html
+TypeError: 'list' object is not callable
+2022-10-07 21:42:24,839 ERROR: Exception on /explore [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 51, in explore
+    # 页面 跟主页面非常相似，因此重用了index.html
+TypeError: 'list' object is not callable
+2022-10-07 21:43:17,386 ERROR: Exception on /explore [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 51, in explore
+    # 页面 跟主页面非常相似，因此重用了index.html
+TypeError: 'list' object is not callable
+2022-10-07 21:43:18,296 ERROR: Exception on /explore [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 51, in explore
+    # 页面 跟主页面非常相似，因此重用了index.html
+TypeError: 'list' object is not callable
+2022-10-07 21:43:24,185 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-07 22:13:49,589 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 17:21:48,386 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]

@@ -15,15 +15,14 @@ from logging.handlers import RotatingFileHandler
 import os, logging
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
 db = SQLAlchemy(app)  # 数据库对象
 migrate = Migrate(app, db)  # 迁移引擎对象
 login = LoginManager(app)
 login.login_view = 'login'
 
-app.config.from_object(Config)
 
-from app import routes, models, errors  # 导入一个新模块models，它将定义数据库的结构
 
 if not app.debug:
 
@@ -39,3 +38,5 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+from app import routes, models, errors  # 导入一个新模块models，它将定义数据库的结构

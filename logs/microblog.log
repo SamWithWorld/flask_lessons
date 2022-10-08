@@ -1,10 +1,87 @@
-2022-10-03 21:48:12,209 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-03 22:25:12,638 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-05 18:15:16,891 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-05 18:15:52,256 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-06 18:12:32,576 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-06 18:42:56,737 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-06 21:22:27,689 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-06 21:23:55,192 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-06 21:25:12,782 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-06 21:27:58,733 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-08 22:14:41,112 ERROR: Exception on /pag/ [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 204, in pag
+    return render_template('pag.html', **context)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/pag.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/base.html", line 35, in top-level template code
+    {% block content %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/pag.html", line 58, in block "content"
+    {% include '_post.html' %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/_post.html", line 3, in top-level template code
+    <td><img src="{{ post.author.avatar(36) }}"></td>
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'post' is undefined
+2022-10-08 22:15:33,745 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:17:47,595 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:22:28,131 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:28:57,573 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:29:40,870 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:36:31,749 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:36:35,693 ERROR: Exception on /explore [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 225, in explore
+    return render_template('index.html', title='Explore', **context)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/base.html", line 35, in top-level template code
+    {% block content %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/index.html", line 5, in block "content"
+    共有 {{ post_records |length }} 条内容：
+TypeError: object of type 'BaseQuery' has no len()
+2022-10-08 22:36:51,565 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:41:46,486 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:44:37,696 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:48:55,073 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:52:27,201 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:57:19,540 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]
+2022-10-08 22:57:53,239 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:40]

@@ -1,6 +1,7 @@
 
 <html>
 	<head>
+    <script src="{{ url_for("static",filename="js/bootstrap.min.js") }}"></script>
 		{% if title %}
 			<title>{{ title }} - Microblog</title>
 		{% else %}
@@ -10,6 +11,7 @@
 	<body>
 		<div>Microblog:
             <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('explore') }}">Explore</a>
             {% if current_user.is_anonymous %}
                 <a href="{{ url_for('login') }}">Login</a>
             {% else %}
