@@ -29,3 +29,8 @@ TypeError: encoding without a string argument
 2022-10-11 15:53:47,734 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
 2022-10-11 15:56:05,195 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
 2022-10-11 16:10:00,318 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-11 21:58:16,047 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:44]
+2022-10-11 21:58:25,471 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:44]
+2022-10-11 22:00:04,503 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+2022-10-11 22:00:50,799 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:44]
+2022-10-11 22:08:21,175 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:44]
