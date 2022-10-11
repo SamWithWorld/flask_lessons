@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-16_project_paginate
-blog项目分页功能
+17_project_mail
+blog项目发送邮件
 '''
 from app import app, db
 from app.models import User, Post
