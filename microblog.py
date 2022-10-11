@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-17_project_mail
-blog项目发送邮件
+18_project_bootstrap
+blog项目引入bootstrap
 '''
 from app import app, db
 from app.models import User, Post
