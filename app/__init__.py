@@ -15,6 +15,7 @@ from logging.handlers import RotatingFileHandler
 import os, logging
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -27,6 +28,8 @@ login.login_view = 'login'
 mail = Mail(app)
 # bootstrap
 bootstrap = Bootstrap(app)
+# 日期和时间
+moment = Moment(app)
 
 if not app.debug:
 

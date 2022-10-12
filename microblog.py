@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-18_project_bootstrap
-blog项目引入bootstrap
+19_project_datetime
+blog项目日期和时间
 '''
 from app import app, db
 from app.models import User, Post
