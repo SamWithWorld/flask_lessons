@@ -2,7 +2,7 @@
     <tr>
         <td width="70px">
             <a href="{{ url_for('user', username=post.author.username) }}">
-                <img src="{{ post.author.avatar(70) }}" />
+                <img src="{{ post.author.avatar(70) }}"/>
             </a>
         </td>
         <td>
@@ -11,7 +11,17 @@
             </a>
             says: {{ moment(post.timestamp).fromNow(refresh=True) }}
             <br>
-            {{ post.body }}
+
+            <span id="post{{ post.id }}">{{ post.body }} </span>
+
+
+            {% if post.language and post.language != g.locale %}
+                <br><br>
+                <span id="translation{{ post.id }}">
+                    <a href="javascript:translate('#post{{ post.id }}', '#translation{{ post.id }}', '{{ post.language }}', '{{ g.locale }}');">Translate</a>
+                </span>
+            {% endif %}
+
         </td>
     </tr>
 </table>

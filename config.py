@@ -21,3 +21,12 @@ class Config:
     MAIL_USERNAME = '<你的163邮箱地址>'
     MAIL_PASSWORD = '<你的163邮箱密码>'
     MAIL_DEFAULT_SENDER = '<你的163邮箱地址>'
+
+    # 百度翻译
+
+    BD_TRANSLATOR_APPID = os.environ.get('BD_TRANSLATOR_APPID')
+
+    BD_TRANSLATOR_KEY = os.environ.get('BD_TRANSLATOR_KEY')
+
+
+

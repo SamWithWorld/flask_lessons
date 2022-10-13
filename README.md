@@ -1,5 +1,5 @@
-19_project_datetime
+20_project_ajax
 
 
 
-    blog项目日期和时间
+    blog项目引入ajax

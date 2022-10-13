@@ -16,6 +16,8 @@ import os, logging
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_babel import Babel
+from flask import request
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -30,6 +32,8 @@ mail = Mail(app)
 bootstrap = Bootstrap(app)
 # 日期和时间
 moment = Moment(app)
+# 翻译
+babel = Babel(app)
 
 if not app.debug:
 

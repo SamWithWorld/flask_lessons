@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-19_project_datetime
-blog项目日期和时间
+20_project_ajax
+blog项目引入ajax
 '''
 from app import app, db
 from app.models import User, Post
