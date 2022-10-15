@@ -4,7 +4,7 @@
 # @Time      :2022-09-12 21:24
 # @Author    :Sam
 
-from app import db, app
+from app import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin

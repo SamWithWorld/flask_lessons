@@ -1,11 +1,12 @@
 # encoding: utf-8
 '''
-20_project_ajax
-blog项目引入ajax
+21_project_Structure
+blog项目重构应用程序
 '''
-from app import app, db
+from app import create_app, db
 from app.models import User, Post
 
+app = create_app()
 
 @app.shell_context_processor
 def make_shell_context():

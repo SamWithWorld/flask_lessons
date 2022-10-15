@@ -1,4 +1,4 @@
-2022-10-11 13:44:14,707 ERROR: Exception on /reset_password_request/ [POST] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+2022-10-15 13:46:39,674 ERROR: Exception on /user/sam [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,25 +12,49 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 196, in reset_password_request
-    send_password_reset_email(user)
-  File "/Users/sam/PycharmProjects/flask_lessons/app/email.py", line 28, in send_password_reset_email
-    text_body='ABC')
-  File "/Users/sam/PycharmProjects/flask_lessons/app/email.py", line 20, in send_email
-    mail.send(msg)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 491, in send
-    with self.connect() as connection:
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
-    self.host = self.configure_host()
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
-    host.login(self.mail.username, self.mail.password)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/smtplib.py", line 721, in login
-    initial_response_ok=initial_response_ok)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/smtplib.py", line 630, in auth
-    response = encode_base64(initial_response.encode('ascii'), eol='')
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 2-7: ordinal not in range(128)
-2022-10-11 13:44:48,815 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-11 13:44:55,866 ERROR: Exception on /reset_password_request/ [POST] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/main/routes.py", line 92, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url, form=form)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/base.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/base.html", line 75, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/sam/PycharmProjects/flask_lessons/app/templates/user.html", line 25, in block "app_content"
+    <a href="{{ url_for('main.edit_profile') }}">Edit your profile</a>
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
+2022-10-15 13:48:53,465 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:69]
+2022-10-15 13:49:38,835 ERROR: Exception on /translate/ [POST] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -44,25 +68,14 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 196, in reset_password_request
-    send_password_reset_email(user)
-  File "/Users/sam/PycharmProjects/flask_lessons/app/email.py", line 28, in send_password_reset_email
-    text_body='ABC')
-  File "/Users/sam/PycharmProjects/flask_lessons/app/email.py", line 20, in send_email
-    mail.send(msg)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 491, in send
-    with self.connect() as connection:
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
-    self.host = self.configure_host()
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
-    host.login(self.mail.username, self.mail.password)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/smtplib.py", line 721, in login
-    initial_response_ok=initial_response_ok)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/smtplib.py", line 630, in auth
-    response = encode_base64(initial_response.encode('ascii'), eol='')
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 2-7: ordinal not in range(128)
-2022-10-11 13:46:36,400 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-11 13:46:50,864 ERROR: Exception on /reset_password_request/ [POST] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/main/routes.py", line 160, in translate_text
+    {'text': translate(request.form['text'], request.form['source_language'], request.form['dest_language'])})
+  File "/Users/sam/PycharmProjects/flask_lessons/app/translate.py", line 14, in translate
+    if not config.Config.BD_TRANSLATOR_APPID:
+AttributeError: type object 'Config' has no attribute 'BD_TRANSLATOR_APPID'
+2022-10-15 13:49:51,160 ERROR: Exception on /index/ [GET] [in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -76,24 +89,18 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/sam/PycharmProjects/flask_lessons/app/routes.py", line 196, in reset_password_request
-    send_password_reset_email(user)
-  File "/Users/sam/PycharmProjects/flask_lessons/app/email.py", line 26, in send_password_reset_email
-    text_body='ABC')
-  File "/Users/sam/PycharmProjects/flask_lessons/app/email.py", line 18, in send_email
-    mail.send(msg)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 491, in send
-    with self.connect() as connection:
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
-    self.host = self.configure_host()
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
-    host.login(self.mail.username, self.mail.password)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/smtplib.py", line 721, in login
-    initial_response_ok=initial_response_ok)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/smtplib.py", line 630, in auth
-    response = encode_base64(initial_response.encode('ascii'), eol='')
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 2-7: ordinal not in range(128)
-2022-10-11 13:54:08,668 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-11 14:01:38,293 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-11 14:13:24,970 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
-2022-10-11 14:13:37,564 INFO: Microblog startup [in /Users/sam/PycharmProjects/flask_lessons/app/__init__.py:41]
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/sam/PycharmProjects/flask_lessons/app/main/routes.py", line 56, in index
+    next_url = url_for('main.index', page=posts.next_num) if posts.has_next else None
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index' with values ['page']. Did you mean 'main.index' instead?

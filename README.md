@@ -1,5 +1,5 @@
-20_project_ajax
+21_project_Structure
 
 
 
-    blog项目引入ajax
+    blog项目重构应用程序
