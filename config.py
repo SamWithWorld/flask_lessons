@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 
-'''通过dotenv管理配置项（目前不采用此方法），前提：分别执行export 命令，例如export MAIL_SERVER='smtp.163.com'；export MAIL_PORT=25等'''
+# 邮箱、百度翻译配置项均在microblog.env中
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, 'microblog.env'))
 
