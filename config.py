@@ -14,18 +14,18 @@ class Config(object):
     # 每页显示的帖子数
     POSTS_PER_PAGE = 3
 
-    # MAIL_SERVER = 'smtp.163.com'
-    # MAIL_PORT = 25
-    # MAIL_USE_TLS = False
-    # MAIL_USERNAME = '<你的163邮箱地址>'
-    # MAIL_PASSWORD = '<你的163邮箱密码>'
-    # MAIL_DEFAULT_SENDER = '<你的163邮箱地址>'
-    #
-    # # 百度翻译
-    #
-    # BD_TRANSLATOR_APPID = os.environ.get('BD_TRANSLATOR_APPID')
-    #
-    # BD_TRANSLATOR_KEY = os.environ.get('BD_TRANSLATOR_KEY')
-    #
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS')
+    MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'false').lower() in ['true', 'on', '1']
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')  # 客户端授权密码
+
+    # 百度翻译
+
+    BD_TRANSLATOR_APPID = os.environ.get('BD_TRANSLATOR_APPID')
+
+    BD_TRANSLATOR_KEY = os.environ.get('BD_TRANSLATOR_KEY')
+
 
 
