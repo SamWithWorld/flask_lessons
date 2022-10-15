@@ -1,5 +1,6 @@
 # Packages
 __pycache__
 .idea
+logs/
 *.env
 .env
