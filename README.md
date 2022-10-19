@@ -6,7 +6,9 @@
     
     1. 搭建Elasticsearch，启动 Elasticsearch
     
-    2. 新建microblog.env后配置以下选项：
+    2. 搭建Kibana，启动 Kibana
+    
+    3. 新建microblog.env后配置以下选项：
     
         MAIL_SERVER='smtp.163.com'
         MAIL_PORT=25
