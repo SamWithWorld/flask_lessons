@@ -12,7 +12,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # 每页显示的帖子数
-    POSTS_PER_PAGE = 3
+    POSTS_PER_PAGE = 6
 
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
@@ -22,10 +22,12 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')  # 客户端授权密码
 
     # 百度翻译
-
     BD_TRANSLATOR_APPID = os.environ.get('BD_TRANSLATOR_APPID')
-
     BD_TRANSLATOR_KEY = os.environ.get('BD_TRANSLATOR_KEY')
+
+    # Elasticsearch配置
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+
 
 
 

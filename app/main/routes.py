@@ -16,9 +16,10 @@ from app.main.forms import EmptyForm, PostForm, EditProfileForm
 import config
 from flask_babel import get_locale
 from guess_language import guess_language
-from flask import jsonify
+from flask import jsonify, g, current_app
 from app.translate import translate
 from app.main import bp
+from app.main.forms import SearchForm
 
 
 # 记录上次访问的时间
@@ -27,8 +28,10 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+        g.search_form = SearchForm()
     # g.locale = 'zh' if str(get_locale()).startswith('zh') else str(get_locale())
     g.locale = str(get_locale())
+
 
 # 2个路由
 @bp.route('/', methods=['GET', 'POST'])
@@ -39,7 +42,7 @@ def index():
     form = PostForm()
     if form.validate_on_submit():
         language = guess_language(form.post.data)
-        print("language:",language)
+        print("language:", language)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
         post = Post(body=form.post.data, author=current_user, language=language)
@@ -157,3 +160,25 @@ def unfollow(username):
 def translate_text():
     return jsonify(
         {'text': translate(request.form['text'], request.form['source_language'], request.form['dest_language'])})
+
+
+# 搜索
+
+@bp.route('/search/')
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('main.explore'))
+
+    page = request.args.get('page', 1, type=int)
+    posts, total = Post.search(g.search_form.q.data, page,
+                               config.Config.POSTS_PER_PAGE)
+
+    next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) \
+        if total > page * current_app.config['POSTS_PER_PAGE'] else None
+
+    prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
+        if page > 1 else None
+
+    return render_template('search.html', title='Search', posts=posts,
+                           next_url=next_url, prev_url=prev_url)
