@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-21_project_Structure
-blog项目重构应用程序
+22_project_fulltext_search
+blog项目全文搜索
 '''
 from app import create_app, db
 from app.models import User, Post
