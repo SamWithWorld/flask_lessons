@@ -1,8 +1,8 @@
-22_project_fulltext_search
+23_gunicorn_deploy_project
 
 
 
-    blog项目全文搜索
+    使用gunicorn、nginx、supervisor部署blog
     
     1. 搭建Elasticsearch，启动 Elasticsearch
     
@@ -20,4 +20,21 @@
         BD_TRANSLATOR_KEY='<你的百度翻译密钥>'
         ELASTICSEARCH_URL='<Elasticsearch 地址>'
         
+    4. 安装gunicorn、nginx、supervisor,配置/usr/local/etc/supervisord.ini文件，添加要监听的子进程，启动：supervisord -c /usr/local/etc/supervisord.ini
     
+    监听gunicorn、nginx子进程如下：
+    
+    [program:gunicorn]
+    command=/Library/Frameworks/Python.framework/Versions/3.7/bin/gunicorn -w 2 -b 127.0.0.1:5000 microblog:app
+    directory=/Users/sam/PycharmProjects/flask_lessons
+    autostart=true
+    autorestart=true
+    user=sam
+    redirect_stderr=true
+    
+    [program:nginx]
+    command=/usr/local/bin/nginx -g 'daemon on;'
+    autostart=true
+    autorestart=true
+    user=sam
+    redirect_stderr=true

@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-22_project_fulltext_search
-blog项目全文搜索
+23_gunicorn_deploy_project
+使用gunicorn、nginx、supervisor部署blog
 '''
 from app import create_app, db
 from app.models import User, Post
