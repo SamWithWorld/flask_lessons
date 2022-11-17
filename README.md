@@ -1,8 +1,8 @@
-23_gunicorn_deploy_project
+24_project_js_magic
 
 
 
-    使用gunicorn、nginx、supervisor部署blog
+    当鼠标悬停在用户名上，就会弹出窗口，在弹窗中显示用户的简要信息
     
     1. 搭建Elasticsearch，启动 Elasticsearch
     

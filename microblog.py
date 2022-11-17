@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
-23_gunicorn_deploy_project
-使用gunicorn、nginx、supervisor部署blog
+24_project_js_magic
+当鼠标悬停在用户名上，就会弹出窗口，在弹窗中显示用户的简要信息
 '''
 from app import create_app, db
 from app.models import User, Post

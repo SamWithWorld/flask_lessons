@@ -1,25 +1,5 @@
 {% extends "bootstrap/base.html" %}
 
-{% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-{#    {{ moment.lang(g.locale) }}#}
-    <script>
-        function translate(sourceElem, destElem, sourceLang, destLang) {
-            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
-            $.post('/translate/', {
-                text: $(sourceElem).text(),
-                source_language: sourceLang,
-                dest_language: destLang
-            }).done(function (response) {
-                $(destElem).text(response['text'])
-            }).fail(function () {
-                $(destElem).text("Error:Could not contact server.");
-            });
-        }
-    </script>
-{% endblock %}
-
 {% block title %}
     {% if title %}
         {{ title }} - Microblog
@@ -88,3 +68,70 @@
     </div>
 {% endblock %}
 
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+{#    {{ moment.lang(g.locale) }}#}
+    <script>
+        function translate(sourceElem, destElem, sourceLang, destLang) {
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate/', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function (response) {
+                $(destElem).text(response['text'])
+            }).fail(function () {
+                $(destElem).text("Error:Could not contact server.");
+            });
+        }
+        $(function () {
+            var timer=null;
+            var xhr=null;
+
+            $('.user_popup').hover(
+                // mouse in event handler
+                function(event){
+                    var elem = $(event.currentTarget);
+                    timer = setTimeout(function () {
+                        timer = null;
+                        // popup logic goes here
+                        console.log('==>',elem,elem.first().text().trim())
+                        xhr = $.ajax(
+                            '/user/' + elem.first().text().trim() + '/popup').done(
+                                function (data) {
+                                    xhr = null;
+                                    elem.popover({
+                                        trigger: 'manual',
+                                        html: true,
+                                        animation: false,
+                                        container: elem,
+                                        content: data
+                                    }).popover('show');
+                                    flask_moment_render_all();
+                                }
+                        );
+                    },200);
+                },
+
+                // mouse out event handler
+                function(event) {
+                    var elem = $(event.currentTarget);
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    else if (xhr) {
+                        xhr.abort();
+                        xhr = null;
+                    }
+                    else {
+                        // destroy popup here
+                        elem.popover('destroy');
+                    }
+            }
+            )
+        
+        })
+    </script>
+{% endblock %}

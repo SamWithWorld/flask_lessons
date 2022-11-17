@@ -6,10 +6,15 @@
             </a>
         </td>
         <td>
-            <a href="{{ url_for('main.user', username=post.author.username) }}" target="_blank">
-                {{ post.author.username }}
-            </a>
-            says: {{ moment(post.timestamp).fromNow(refresh=True) }}
+            {% set user_link %}
+                <span class="user_popup">
+                    <a href="{{ url_for('main.user', username=post.author.username) }}" target="_blank">
+                        {{ post.author.username }}
+                    </a>
+                </span>
+            {% endset %}
+
+            {{ user_link }} says: {{ moment(post.timestamp).fromNow(refresh=True) }}
             <br>
 
             <span id="post{{ post.id }}">{{ post.body }} </span>
