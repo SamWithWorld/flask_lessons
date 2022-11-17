@@ -1,16 +1,18 @@
 # encoding: utf-8
 '''
-24_project_js_magic
-当鼠标悬停在用户名上，就会弹出窗口，在弹窗中显示用户的简要信息
+25_blog_user_notifications
+给用户发送私信后，在Message栏显示未读消息徽章
 '''
 from app import create_app, db
-from app.models import User, Post
+from app.models import User, Post, Notification, Message
 
 app = create_app()
 
+
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'User': User, 'Post': Post}
+    return {'db': db, 'User': User, 'Post': Post, 'Message': Message,
+            "Notification": Notification}
 
 
 if __name__ == '__main__':

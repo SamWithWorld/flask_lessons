@@ -41,6 +41,10 @@
                     </p>
 
                 {% endif %}
+
+                {% if user != current_user %}
+                    <p><a href="{{ url_for('main.send_message', recipient=user.username) }}"> 发送私信 </a></p>
+                {% endif %}
             </td>
         </tr>
     </table>

@@ -1,8 +1,8 @@
-24_project_js_magic
+25_blog_user_notifications
 
 
 
-    当鼠标悬停在用户名上，就会弹出窗口，在弹窗中显示用户的简要信息
+    给用户发送私信后，在Message栏显示未读消息徽章
     
     1. 搭建Elasticsearch，启动 Elasticsearch
     
