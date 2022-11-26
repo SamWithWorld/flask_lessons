@@ -1,8 +1,8 @@
-25_blog_user_notifications
+26_blog_rq_queue
 
 
 
-    给用户发送私信后，在Message栏显示未读消息徽章
+    blog项目添加rq消息队列
     
     1. 搭建Elasticsearch，启动 Elasticsearch
     

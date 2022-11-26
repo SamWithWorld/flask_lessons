@@ -14,6 +14,9 @@ from time import time
 import jwt, json
 import config
 from app.search import add_to_index, remove_from_index, query_index
+import redis
+import rq
+from flask import current_app
 
 # 关注者关联表
 followers = db.Table(
@@ -52,7 +55,10 @@ class User(UserMixin, db.Model):
     last_message_read_time = db.Column(db.DateTime)
 
     # 通知
-    notifications = db.relationship('Notification',backref='user',lazy='dynamic')
+    notifications = db.relationship('Notification', backref='user', lazy='dynamic')
+
+    # rq 消息队列任务
+    tasks = db.relationship('Task', backref='user', lazy='dynamic')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -97,7 +103,6 @@ class User(UserMixin, db.Model):
         return jwt.encode({
             'reset_password': self.id, 'exp': time() + expires_in}, config.Config.SECRET_KEY, algorithm='HS256')
 
-
     @staticmethod
     def verify_reset_password_token(token):
         try:
@@ -111,7 +116,7 @@ class User(UserMixin, db.Model):
         return Message.query.filter_by(recipient=self).filter(
             Message.timestamp > last_read_time).count()
 
-    def add_notification(self,name,data):
+    def add_notification(self, name, data):
         # 如果已经存在同名的通知，则首先将其删除
         self.notifications.filter_by(name=name).delete()
         n = Notification(name=name, payload_json=json.dumps(data), user=self)
@@ -159,8 +164,10 @@ class SearchableMixin(object):
         for obj in cls.query:
             add_to_index(cls.__tablename__, obj)
 
+
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
+
 
 class Post(SearchableMixin, db.Model):
     __searchable__ = ['body']
@@ -181,6 +188,7 @@ class Post(SearchableMixin, db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
+
 # 发送消息的模型
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -192,6 +200,7 @@ class Message(db.Model):
     def __repr__(self):
         return '<Message {}>'.format(self.body)
 
+
 class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), index=True)
@@ -201,3 +210,23 @@ class Notification(db.Model):
 
     def get_data(self):
         return json.loads(str(self.payload_json))
+
+
+# rq 消息队列任务
+class Task(db.Model):
+    id = db.Column(db.String(36), primary_key=True)
+    name = db.Column(db.String(128), index=True)
+    description = db.Column(db.String(128))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    complete = db.Column(db.Boolean, default=False)
+
+    def get_rq_job(self):
+        try:
+            rq_job = rq.job.Job.fetch(self.id, connection=current_app.redis)
+        except (redis.exceptions.RedisError, rq.exceptions.NoSuchJobError):
+            return None
+        return rq_job
+
+    def get_progress(self):
+        job = self.get_rq_job()
+        return job.meta.get('progress', 0) if job is not None else 0
