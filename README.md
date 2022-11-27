@@ -2,7 +2,13 @@
 
 
 
-    blog项目添加rq消息队列
+    blog项目添加rq消息队列，将发送邮件任务交给rq处理
+    
+    -2.使用redis-server命令启动redis
+    
+    -1.在项目目录下执行rq worker microblog-tasks命令启动worker
+    
+    0. 发送邮件，在tasks.py中export_posts调用send_mail发送邮件，通过sync字段控制异步发送还是同步发送邮件
     
     1. 搭建Elasticsearch，启动 Elasticsearch
     

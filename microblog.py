@@ -1,7 +1,7 @@
 # encoding: utf-8
 '''
 26_blog_rq_queue
-blog项目添加rq消息队列
+blog项目添加rq消息队列，将发送邮件任务交给rq处理
 '''
 from app import create_app, db
 from app.models import User, Post, Notification, Message, Task

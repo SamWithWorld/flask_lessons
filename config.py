@@ -30,6 +30,9 @@ class Config(object):
 
     # Elasticsearch配置
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+    # Redis 配置
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
+
 
 
 

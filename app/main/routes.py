@@ -21,7 +21,7 @@ from app.translate import translate
 from app.main import bp
 from app.main.forms import SearchForm
 from app.main.forms import MessageForm
-from app.models import Message,Notification
+from app.models import Message, Notification
 
 
 # 记录上次访问的时间
@@ -185,13 +185,15 @@ def search():
     return render_template('search.html', title='Search', posts=posts,
                            next_url=next_url, prev_url=prev_url)
 
+
 # 用户信息弹窗视图。当鼠标悬停在用户名上在弹窗中显示用户的简要信息
 @bp.route('/user/<username>/popup')
 @login_required
 def user_popup(username):
     user = User.query.filter_by(username=username).first_or_404()
     form = EmptyForm()
-    return render_template('user_popup.html',user=user,form=form)
+    return render_template('user_popup.html', user=user, form=form)
+
 
 # 发送私有消息
 @bp.route('/send_message/<recipient>', methods=['GET', 'POST'])
@@ -210,6 +212,7 @@ def send_message(recipient):
     return render_template('send_message.html', title='Send Message',
                            form=form, recipient=recipient)
 
+
 # 查看私人消息路由
 @bp.route('/messages')
 @login_required
@@ -221,14 +224,15 @@ def messages():
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
         Message.timestamp.desc()).paginate(
-            page=page, per_page=current_app.config['POSTS_PER_PAGE'],
-            error_out=False)
+        page=page, per_page=current_app.config['POSTS_PER_PAGE'],
+        error_out=False)
     next_url = url_for('main.messages', page=messages.next_num) \
         if messages.has_next else None
     prev_url = url_for('main.messages', page=messages.prev_num) \
         if messages.has_prev else None
     return render_template('messages.html', messages=messages.items,
                            next_url=next_url, prev_url=prev_url)
+
 
 # 通知视图函数
 @bp.route('/notifications')
@@ -242,3 +246,15 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+
+# 导出帖子视图函数
+@bp.route('/export_posts/')
+@login_required
+def export_posts():
+    if current_user.get_task_in_progress('export_posts'):
+        flash('An export task is currently in progress')
+    else:
+        current_user.launch_task('export_posts', 'Exporting posts...')
+        db.session.commit()
+    return redirect(url_for('main.user', username=current_user.username))
